@@ -4,7 +4,13 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- main
+  - main
+  - releases/*
+
+pr:
+  - main
+  - releases/*
+
 
 pool:
   vmImage: "windows-latest"
@@ -35,10 +41,6 @@ steps:
     reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
     failIfCoverageEmpty: true
 
-trigger:
-  - main
-  - releases/*
 
-pr:
-  - main
-  - releases/*
+
+
